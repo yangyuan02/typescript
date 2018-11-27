@@ -142,15 +142,40 @@ function getString(something: string | number): string {
 // }
 // tom.id = 9527//error 被readonly修饰过了后面赋值会报错
 
-interface Person {
-    readonly id: number;
-    name: string;
-    age?: number;
-    [propName: string]: any;
-}
-let tom :Person = {
-    name: 'tom',
-    gender: 'male',
-    //id:1, 应该在这里初始化赋值
-}
+// interface Person {
+//     readonly id: number;
+//     name: string;
+//     age?: number;
+//     [propName: string]: any;
+// }
+// let tom :Person = {
+//     name: 'tom',
+//     gender: 'male',
+//     //id:1, 应该在这里初始化赋值
+// }
 // tom.id = 1//后面赋值报错应该在对象初始化赋值
+
+//数组类型===>定义比较灵活
+// [类型+方括号]表示法
+// let fibonacci: number[] = [1,2,3];
+// let fibonacci:number[] = [1,2,3,'1']//error
+// let fibonacci: number[] = [1,2,3];
+// fibonacci.push('8');//error
+
+//数组泛型 Array<elemType>
+// let fibonacci: Array<number> = [1,2,3,4];
+
+//有接口表示数组
+interface NumberArray {
+    [index: number]: number;//只要index/类型是number/那么类型必须是number
+};
+let fibonacci: NumberArray = [1,2,3];
+
+//any在数组的应用
+
+let list: any[] = ['1',1,{age:1}];
+
+//类数组
+// function sum() {
+//     let args: number[] = arguments;//error success==> let args: IArguments = arguments
+// }
